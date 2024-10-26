@@ -4,33 +4,25 @@ import Card from '../components/Card.jsx';  // Ensure this imports your Card com
 import { useState, useEffect } from 'react';
 
 function FrontPage() {
-
-
-
-  
   return (
     <>
-      <header className="header">
-        <h1>BoilerDorms</h1>
+      <header className='front-header'>
+        <button id='Signup'>Sign Up</button>
+        <button id='Signin'>Log in</button>
       </header>
-      <div className="card-container">
-        <Card
-          title="Dorms"
-          text="View Review of all dorms! [Insert Description]"
-          link="/dorms"
-        />
-        <Card
-          title="Page 2"
-          text="View Page 2! [Insert Description]"
-          link="/page-2"
-        />
-        <Card
-          title="Page 3"
-          text="View Page 3! [Insert Description]"
-          link="/page-3"
-        />
-        
+      
+      <div className='front-page'>
+        <body>
+          <h1>Boiler Dorms</h1>
+          <p>Discover what Purdue has to say about <br></br><b>that one dorm,</b> and all other, normal dorms.</p>
+          <div className='dorm-button-container'>
+            <button className='dorm-button'>View Dorms</button>
+          </div>
+
+        </body>
       </div>
+      
+
     </>
   );
 }
