@@ -3,7 +3,8 @@ import { Routes, Route} from 'react-router-dom'
 import FrontPage from './pages/FrontPage';  
 import DormsPage from './pages/Dorms';  
 import Page3 from './pages/Page3';  
-import Page2 from './pages/Page2';  
+import Page2 from './pages/Page2';
+import { Auth } from "./components/auth";
 
 const App = () => {
   return (
