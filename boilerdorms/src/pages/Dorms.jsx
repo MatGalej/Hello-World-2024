@@ -4,6 +4,7 @@ import Navbar from './../components/NavBar';
 import { db } from './../config/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import Sidebar from '../components/DormSideBar';
+import ReviewForm from '../components/ReviewForm';
 
 const DormsPage = () => {
   const [reviewList, setReviewList] = useState([]);
@@ -50,18 +51,22 @@ const DormsPage = () => {
         <Sidebar onLinkClick={handleLinkClick} />
         <div className="reviews-container" style={{ padding: '20px', flexGrow: 1 }}>
           <h2>Selected Dorm: {dormSelection}</h2>
+          <ReviewForm></ReviewForm>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            {reviewList.length > 0 ? (
+            {(reviewList.length > 0) ? (
               reviewList
                 .filter(review => review.dorm_name === dormSelection) 
                 .map(review => (
                   <div key={review.id} className="review">
                     <h3>{review.dorm_name}</h3>
                     <p>Rating: {review.rating}</p>
+                    <p>{review.text}</p>
                   </div>
                 ))
             ) : (
-              <p>No reviews available.</p>
+              <div>
+                <p>No reviews available.</p>
+              </div>
             )}
           </div>
         </div>
