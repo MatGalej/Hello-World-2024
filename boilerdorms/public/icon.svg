@@ -1,0 +1,19 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Building base -->
+  <rect x="20" y="20" width="60" height="70" fill="#DAAA00" />
+  <!-- Windows -->
+  <rect x="27" y="27" width="10" height="10" fill="#FFFFFF" />
+  <rect x="43" y="27" width="10" height="10" fill="#FFFFFF" />
+  <rect x="59" y="27" width="10" height="10" fill="#FFFFFF" />
+  
+  <rect x="27" y="43" width="10" height="10" fill="#FFFFFF" />
+  <rect x="43" y="43" width="10" height="10" fill="#FFFFFF" />
+  <rect x="59" y="43" width="10" height="10" fill="#FFFFFF" />
+  
+  <rect x="27" y="59" width="10" height="10" fill="#FFFFFF" />
+  <rect x="43" y="59" width="10" height="10" fill="#FFFFFF" />
+  <rect x="59" y="59" width="10" height="10" fill="#FFFFFF" />
+  
+  <!-- Door -->
+  <rect x="42" y="75" width="16" height="15" fill="#404040" />
+</svg>

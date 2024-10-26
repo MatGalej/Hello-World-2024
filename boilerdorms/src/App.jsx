@@ -16,6 +16,12 @@ const App = () => {
             <Route path="/page-3" element={<Page3/>}/>
 
         </Routes>
+
+        <div className="App">
+            <Auth/>
+        </div>
+
+
     </>
 
     
