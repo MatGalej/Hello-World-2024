@@ -4,7 +4,7 @@ import FrontPage from './pages/FrontPage';
 import DormsPage from './pages/Dorms';  
 import Page3 from './pages/Page3';  
 import Page2 from './pages/Page2';
-import { Auth } from "./components/auth";
+import { Auth } from "./pages/auth";
 
 const App = () => {
   return (
@@ -17,11 +17,7 @@ const App = () => {
 
         </Routes>
 
-        <div className="App">
-            <Auth/>
-        </div>
-
-
+        
     </>
 
     

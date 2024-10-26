@@ -7,8 +7,12 @@ function FrontPage() {
   return (
     <>
       <header className='front-header'>
-        <button id='Signup'>Sign Up</button>
-        <button id='Signin'>Log in</button>
+        <a href='/Page2'>
+          <button id='Signup'>Sign Up</button>
+        </a>
+        <a href='/Page3'>
+          <button id='Signin'>Log in</button>
+        </a>
       </header>
       
       <div className='front-page'>
@@ -16,7 +20,9 @@ function FrontPage() {
           <h1>Boiler Dorms</h1>
           <p>Discover what Purdue has to say about <br></br><b>that one dorm,</b> and all other, normal dorms.</p>
           <div className='dorm-button-container'>
-            <button className='dorm-button'>View Dorms</button>
+            <a href='/Dorms'>
+              <button className='dorm-button'>View Dorms</button>
+            </a>
           </div>
 
         </body>
