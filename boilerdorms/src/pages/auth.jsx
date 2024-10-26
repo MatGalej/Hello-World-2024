@@ -1,5 +1,5 @@
 import { auth } from '../config/firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from "react";
 
 export const Auth = () => {
@@ -19,22 +19,26 @@ export const Auth = () => {
         }
 
         try {
-            await signInWithEmailAndPassword(auth, Email, Password);
-            console.log("User signed in successfully");
+            await createUserWithEmailAndPassword(auth, Email, Password);
+            console.log("User created successfully");
         } catch (err) {
-            if (err.code === 'auth/user-not-found') {
-                alert("No account found with this email. Please create an account first.");
-            } else {
-                console.error("Error signing in:", err.message);
-            }
+            console.error("Error creating user", err.message);
         }
     }
 
     return (
-        <div>
-            <input placeholder="Email..." onChange={(e) => setEmail(e.target.value)} />
-            <input type="password" placeholder="Password..." onChange={(e) => setPassword(e.target.value)} />
-            <button onClick={signIn}> Sign In </button>
+        <div className='signup-form'>
+            <div className='email'>
+                <input className='email-form' placeholder="Email..." onChange={(e) => setEmail(e.target.value)} />
+            </div>
+            <div className='password'>
+                <input className='password-form' type="password" placeholder="Password..." onChange={(e) => setPassword(e.target.value)} />
+            </div>
+            <div className='signup'>
+                <button className='signup-button' onClick={signIn}> Sign Up! </button>
+            </div>
+
+
         </div>
     );
 };

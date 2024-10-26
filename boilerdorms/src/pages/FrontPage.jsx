@@ -7,11 +7,11 @@ function FrontPage() {
   return (
     <>
       <header className='front-header'>
-        <a href='/Page2'>
+        <a href='/Signup'>
           <button id='Signup'>Sign Up</button>
         </a>
-        <a href='/Page3'>
-          <button id='Signin'>Log in</button>
+        <a href='/Login'>
+          <button id='Signin'>Log In</button>
         </a>
       </header>
       

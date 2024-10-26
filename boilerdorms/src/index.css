@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 
 .front-page body h1 {
-  margin-top: 15%;
+  margin-top: 30vh;
   font-family: 'Space-Grotesk';
   font-size: 48px;
   text-align: center;
@@ -12,6 +12,7 @@
   text-align: center;
   font-family: 'Space-Grotesk';
   font-size: 1.5em;
+  margin-top: .3em;
 }
 
 button:hover {
@@ -36,6 +37,7 @@ button:active {
 
 .dorm-button-container {
   text-align: center;
+  margin-top: 2em
 }
 
 .dorm-button {

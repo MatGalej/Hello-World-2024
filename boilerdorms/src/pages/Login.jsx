@@ -1,14 +1,14 @@
 import React from 'react';
-import './../index.css';
-import Navbar from './../components/NavBar';
+import './../login.css';
+import Navbar from '../components/NavBar';
 import { useState, useEffect } from 'react';
 
-const Page3 = () => {
+const Login = () => {
   
     return (
     <>
       <header className="header">
-      <h1>Page 3</h1>
+      <h1>Page 2</h1>
       </header>
      
       <Navbar
@@ -16,11 +16,11 @@ const Page3 = () => {
          text1="Home" 
          link2="/dorms" 
          text2="Dorms" 
-         link3="/page-2" 
-         text3="Page 2" 
+         link3="/page-3" 
+         text3="Page 3" 
       />
     </>
     );
   };
   
-  export default Page3; 
+  export default Login; 

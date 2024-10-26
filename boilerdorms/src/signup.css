@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Make sure the body and html take the full height of the viewport */
+html,
+body {
+    height: 100%;
+    font-family: 'Space-Grotesk';
+}
+
+/* Full-page background container */
+.background-container {
+    position: relative;
+    height: 100vh;
+    /* Full viewport height */
+    background-image: url('https://www.purdue.edu/home/wp-content/uploads/2024/04/Card1-Purdue-StadiumMall-2023_KAL_1361-1920x960-1.jpg');
+    /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 30% opacity */
+  }
+
+.background-container .overlay .back-button {
+  font-family: 'Space-Grotesk';
+  font-size: 1.2em;
+  border-radius: 10px;
+  padding: 0.5em;
+  margin: 10px;
+  background-color: #555960;
+  color: #FFFFFF;
+  width: 125px;
+  border-style: none;
+}  
+
+.center-overlay {
+    background-color: rgba(255,255,255,.5);
+    text-align: center;
+    width: 500px;
+    margin: 5px auto;
+    width: 50%; 
+    border-radius: 10px;
+    padding: 5px;
+}
+
+
+/* Formatting for the signup form */
+.signup-form {
+    display: block;
+    text-align: center;
+    padding: 10px;
+}
+
+.signup-form .email {
+    margin: 10px auto;
+}
+
+.signup-form .password {
+    margin: 10px auto;
+}
+
+
+/* Button effects */
+
+button:hover {
+  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2); /* Adds shadow on hover */
+}
+
+button:active {
+  box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.2); /* Smaller shadow to appear pressed */
+  transform: translateY(2px); /* Moves the button down slightly */
+}
