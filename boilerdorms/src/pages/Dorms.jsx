@@ -73,7 +73,7 @@ const DormsPage = () => {
         <div className="reviews-container" style={{ display: 'flex', flexDirection: 'column', padding: '10px', flexGrow: 1 }}>
           <MapComponent />
             <div className='review-form-container'>
-            <ReviewForm /> 
+            <ReviewForm dorm_name={dormSelection} updateReviews={updateReviews}></ReviewForm>
             </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0px', marginTop: 0 }}>
             {reviewList.length > 0 ? (
