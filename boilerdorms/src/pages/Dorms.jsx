@@ -57,11 +57,11 @@ const DormsPage = () => {
 
   const calculateAverageRating = (dorm) => {
     const filteredReviews = reviewList.filter(review => review.dorm_name === dorm);
-    
+
     if (filteredReviews.length === 0) {
-      return 0; 
+      return 0;
     }
-  
+
     const totalRating = filteredReviews.reduce((acc, review) => acc + review.rating, 0);
     return (totalRating / filteredReviews.length).toFixed(2);
   };
@@ -70,28 +70,34 @@ const DormsPage = () => {
 
   return (
     <>
-      <header className="header">
-        <header>
+      <header className="header-dorms">
+        <div className='back-button-container'>
           <a href='/'>
             <button className='back-button'>Go Back</button>
           </a>
-        </header>
+        </div>
+        <div className='selected-dorm'>
+          <h2>Selected Dorm: {dormSelection}</h2>	
+        </div>
       </header>
-      <div style={{ display: 'flex' }}>
-        <Sidebar onLinkClick={handleLinkClick} updateTrigger={updateTrigger} />
-        <div className="reviews-container" style={{ padding: '20px', flexGrow: 1 }}>
-          <h2>Selected Dorm: {dormSelection}</h2>
-          {(userVal &&
-            <ReviewForm dorm_name={dormSelection} updateReviews={updateReviews} />
-          )}
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            {reviewList.filter(review => review.dorm_name === dormSelection).length > 0 ? (
+      <div style={{ display: 'flex', gap: '20px', }}> {/* Adjusted gap to separate sidebar and content */}
+        <Sidebar onLinkClick={handleLinkClick} />
+        <div className="reviews-container" style={{ display: 'flex', flexDirection: 'column', padding: '10px', flexGrow: 1 }}>
+          <MapComponent />
+            <div className='review-form-container'>
+            {(
+              user && <ReviewForm dorm_name={dormSelection} updateReviews={updateReviews}/>
+            )}
+            
+            </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0px', marginTop: 0 }}>
+            {reviewList.length > 0 ? (
               reviewList.filter(review => review.dorm_name === dormSelection).map(review => (
-                <ReviewBox 
-                  key={review.id} 
-                  rating={review.rating} 
-                  review={review.text} 
-                  grade={review.dorm_name} 
+                <ReviewBox
+                  key={review.id}
+                  rating={review.rating}
+                  review={review.text}
+                  grade={review.dorm_name} // Explicitly remove margin from each ReviewBox
                 />
               ))
             ) : (
@@ -100,7 +106,6 @@ const DormsPage = () => {
               </div>
             )}
           </div>
-          <MapComponent />
         </div>
       </div>
     </>
