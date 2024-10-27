@@ -26,6 +26,11 @@ export const Auth = () => {
             return;
         }
 
+        if (!grade) {
+            setError(`Please select a grade!`);
+            return;
+        }
+
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, Email, Password);
             const user = userCredential.user; // Use the created user
@@ -33,7 +38,7 @@ export const Auth = () => {
             // Store additional data in Firestore
             await setDoc(doc(db, "users", user.uid), {
                 email: Email,
-                grade: grade
+                grade: grade    
             });
 
             console.log("User created successfully with grade:", grade);
@@ -70,7 +75,7 @@ export const Auth = () => {
             <div className='grade'>
                 <p>What is your grade?</p>
                 <select required onChange={(e) => setGrade(e.target.value)}>
-                    <option>(Select a value)</option>
+                    <option value="">(Select a value)</option>
                     <option>Freshmen</option>
                     <option>Sophomore</option>
                     <option>Junior</option>
