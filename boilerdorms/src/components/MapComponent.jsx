@@ -42,16 +42,24 @@ const markers = [
 
 const MapComponent = ({dormName}) => {
   const mapRef = useRef();
+  const [dormIndex, setDormIndex]=useState(13);
+  const [isChanged, setChanged]=useState(false);
 
   useEffect(() => {
-    
     for(let i=0; i<markers.length; i++){
       if(markers[i].description==dormName){
-        mapRef.current.setView(markers[i].position, 20); 
+        setDormIndex(i);
+        setChanged(true);
       }
     }
-
   }, [dormName]);
+
+  const zoomToTarget = () =>{
+    mapRef.current.setView(markers[dormIndex].position, 20);
+    setChanged(false); 
+  }
+
+  //mapRef.current.setView(markers[i].position, 20); 
 
   return (
     <div>
@@ -81,6 +89,7 @@ const MapComponent = ({dormName}) => {
             <Popup>{marker.description}</Popup>
           </Marker>
         ))}
+        {isChanged && zoomToTarget()}
       </MapContainer>
     </div>
   );
