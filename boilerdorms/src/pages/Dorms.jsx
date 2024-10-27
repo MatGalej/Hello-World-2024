@@ -56,6 +56,7 @@ const DormsPage = () => {
   };
 
   console.log(calculateAverageRating("McCutcheon"));
+  console.log({dormSelection})
   
   return (
     <>
