@@ -28,7 +28,6 @@ const DormsPage = () => {
     })
   },[])
   
-  
   useEffect(() => {
     const reviewsCollectionRef = collection(db, "Reviews");
     const getReviewList = async () => {
@@ -94,7 +93,7 @@ const DormsPage = () => {
             
             </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', marginTop: 0 }}>
-            {reviewList.length > 0 ? (
+            {reviewList.filter(review => review.dorm_name === dormSelection).length > 0 ? (
               reviewList.filter(review => review.dorm_name === dormSelection).map(review => (
                 <ReviewBox
                   key={review.id}
