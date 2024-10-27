@@ -5,6 +5,7 @@ import { db } from './../config/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import Sidebar from '../components/DormSideBar';
 import ReviewForm from '../components/ReviewForm';
+import ReviewBox from '../components/ReviewBox';
 
 const DormsPage = () => {
   const [reviewList, setReviewList] = useState([]);
@@ -33,6 +34,18 @@ const DormsPage = () => {
   const handleLinkClick = (link) => {
     setDormSelection(link);
   };
+  const calculateAverageRating = (dorm) => {
+    const filteredReviews = reviewList.filter(review => review.dorm_name === dorm);
+    
+    if (filteredReviews.length === 0) {
+      return 0; 
+    }
+  
+    const totalRating = filteredReviews.reduce((acc, review) => acc + review.rating, 0);
+    return (totalRating / filteredReviews.length).toFixed(2);
+  };
+  console.log(calculateAverageRating("McCutcheon"))
+  
 
   return (
     <>
@@ -53,24 +66,23 @@ const DormsPage = () => {
           <h2>Selected Dorm: {dormSelection}</h2>
           <ReviewForm dorm = {String(dormSelection)}></ReviewForm>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            {(reviewList.length > 0) ? (
-              reviewList
-                .filter(review => review.dorm_name === dormSelection) 
-                .map(review => (
-                  <div key={review.id} className="review">
-                    <h3>{review.dorm_name}</h3>
-                    <p>Rating: {review.rating}</p>
-                    <p>{review.text}</p>
-                  </div>
-                ))
-            ) : (
-              <div>
-                <p>No reviews available.</p>
-              </div>
-            )}
-          </div>
+           {reviewList.length > 0 ? (
+             reviewList.filter(review => review.dorm_name === dormSelection).map(review => (
+               <ReviewBox 
+                 key={review.id} 
+                 rating={review.rating} 
+                 review={review.text} 
+                 grade={review.dorm_name} 
+               />
+              ))
+             ) : (
+          <div>
+           <p>No reviews available.</p>
+         </div>
+        )}
         </div>
-      </div>
+     </div>
+    </div>
     </>
   );
 };

@@ -1,24 +1,29 @@
 import React from 'react';
 import './../login.css';
-import Navbar from '../components/NavBar';
-import { useState, useEffect } from 'react';
+import { LoginAuth } from './loginAuth';
 
 const Login = () => {
   
     return (
     <>
-      <header className="header">
-      <h1>Page 2</h1>
-      </header>
-     
-      <Navbar
-         link1="/" 
-         text1="Home" 
-         link2="/dorms" 
-         text2="Dorms" 
-         link3="/page-3" 
-         text3="Page 3" 
-      />
+      <div className="background-container-login">
+        <div className="overlay-login">
+        <header>
+            <a href='/'>
+              <button className='back-button'>Go Back</button>
+            </a>
+          </header>
+
+          <body>
+            <div className='center-overlay'>
+              <h1>Please provide the information below to login</h1>
+              <p><i>Please note: You <b>must</b> use a @purdue.edu email to login</i></p>
+              <LoginAuth></LoginAuth>
+            </div>
+          </body>
+
+        </div>
+      </div>
     </>
     );
   };
