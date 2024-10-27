@@ -34,6 +34,7 @@ const DormsPage = () => {
 
   const handleLinkClick = (link) => {
     setDormSelection(link);
+    console.log(reviewList.length);
   };
 
   const calculateAverageRating = (dorm) => {
@@ -62,9 +63,9 @@ const DormsPage = () => {
         <Sidebar onLinkClick={handleLinkClick} />
         <div className="reviews-container" style={{ padding: '20px', flexGrow: 1 }}>
           <h2>Selected Dorm: {dormSelection}</h2>
-          <ReviewForm />
+          <ReviewForm dorm_name={dormSelection}></ReviewForm>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            {reviewList.length > 0 ? (
+            {reviewList.filter(review => review.dorm_name === dormSelection).length > 0 ? (
               reviewList.filter(review => review.dorm_name === dormSelection).map(review => (
                 <ReviewBox 
                   key={review.id} 
