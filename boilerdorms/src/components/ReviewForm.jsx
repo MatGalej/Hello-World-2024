@@ -12,6 +12,7 @@ const ReviewForm = ({dorm_name, updateReviews, grade}) =>{
     const [review, setReview] = useState("");
     const [rating, setRating] = useState(defaultRating);
     const [hoverRating, setHoverRating] = useState(0);
+    const [error, setError] = useState(""); // Error state
 
     const StarRating = (maxRating) => {
         const handleRating = (value) => {
@@ -40,16 +41,18 @@ const ReviewForm = ({dorm_name, updateReviews, grade}) =>{
     };
 
     const handleSubmit = async () =>{
+        setError("");
+      
         if(review==''){
-            alert("Do not leave the review line blank!");
+            setError("Do not leave the review line blank!");
             return;
         }
         if(review.length > maxReviewLength){
-            alert("Your review of "+review.length+" characters exceeds the maximum length of "+maxReviewLength+" characters!");
+            setError("Your review of "+review.length+" characters exceeds the maximum length of "+maxReviewLength+" characters!");
             return;
         }
         if(rating > maxRating || rating < minRating){
-            alert("Invalid rating: Make sure your review is between "+minRating+" and "+maxRating+" stars!");
+            setError("Invalid rating: Make sure your review is between "+minRating+" and "+maxRating+" stars!");
             return;
         }
         
@@ -80,6 +83,12 @@ const ReviewForm = ({dorm_name, updateReviews, grade}) =>{
             <div className='star-rating'>{StarRating(maxRating)}</div>
             <textarea id="reviewTextField" name = "review" placeholder= "Write your review here..." type="text" onChange={(e) => setReview(e.target.value)}/>
             <button id='submit-review' type="button" onClick={(e)=>{handleSubmit()}}>Submit review</button>
+            {error && (
+                <div className="error-box">
+                    <p>{error}</p>
+                </div>
+            )}
+
         </div>
     );
 }

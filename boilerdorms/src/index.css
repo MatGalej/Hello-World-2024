@@ -171,16 +171,17 @@ button:active {
   border-radius: 10px;
   padding: 0.5em;
   margin-top: 1em;
+  margin-bottom: 1em;
   background-color: #DAAA00;
 }
 
 #reviewTextField {
   font-family: 'Space-Grotesk';
-  width: 80%;
-  max-width: 80%;
-  min-width: 80%;
+  width: 95%;
+  max-width: 95%;
+  min-width: 95%;
   border-radius: 5px;
-  min-height: 3em;
+  min-height: 4em;
   max-height: 8em;
   margin: 0;
 }

@@ -14,7 +14,6 @@ const DormsPage = () => {
   const [updateTrigger, setUpdateTrigger] = useState(1);
   const [userGrade, setUserGrade] = useState(""); 
   const [userVal, setUserVal] = useState(null);
-  
   const Auth = getAuth();
 
   useEffect(() => {
