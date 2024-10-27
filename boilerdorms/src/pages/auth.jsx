@@ -22,23 +22,43 @@ export const Auth = () => {
             await createUserWithEmailAndPassword(auth, Email, Password);
             console.log("User created successfully");
         } catch (err) {
-            console.error("Error creating user", err.message);
+            if (err.code == "auth/email-already-in-use") {
+                alert("This email is already registered. Please sign in instead.");
+            } else {
+                console.error("Error creating user", err.message);
+            }
         }
     }
 
     return (
         <div className='signup-form'>
             <div className='email'>
-                <input className='email-form' placeholder="Email..." onChange={(e) => setEmail(e.target.value)} />
+                <p>Email</p>
+                <input required className='email-form' placeholder="purduepete@purdue.edu" onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div className='password'>
-                <input className='password-form' type="password" placeholder="Password..." onChange={(e) => setPassword(e.target.value)} />
+                <p>Password</p>
+                <input required className='password-form' type="password" placeholder="I Love Purdue" onChange={(e) => setPassword(e.target.value)} />
             </div>
+            
+            <div className='grade'>
+                <p>What is your grade?</p>
+                <select required>
+                    <option>(Select a value)</option>
+                    <option>Freshmen</option>
+                    <option>Sophomore</option>
+                    <option>Junior</option>
+                    <option>Senior</option>
+                    <option>Graduate 1st Year</option>
+                    <option>Graduate 2nd Year</option>
+                    <option>PHD</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
             <div className='signup'>
                 <button className='signup-button' onClick={signIn}> Sign Up! </button>
             </div>
-
-
         </div>
     );
 };
