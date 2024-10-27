@@ -1,6 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './../index.css';
-import { useState, useEffect } from 'react';
+import Navbar from './../components/NavBar';
+import { db, auth } from './../config/firebase';
+import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
+import Sidebar from '../components/DormSideBar';
+import ReviewForm from '../components/ReviewForm';
+import ReviewBox from '../components/ReviewBox';
+import MapComponent from '../components/MapComponent'; 
+import {getAuth, onAuthStateChanged } from "firebase/auth";
+
+const Auth = getAuth();
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log(user);
+  } else {
+    console.log("No user");
+  }
+})
 
 function FrontPage() {
   return (

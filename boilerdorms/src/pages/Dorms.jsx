@@ -1,19 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import './../index.css';
 import Navbar from './../components/NavBar';
-import { db } from './../config/firebase';
-import { collection, getDocs } from 'firebase/firestore';
+import { db, auth } from './../config/firebase';
+import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
 import Sidebar from '../components/DormSideBar';
 import ReviewForm from '../components/ReviewForm';
 import ReviewBox from '../components/ReviewBox';
-import MapComponent from '../components/MapComponent';
+import MapComponent from '../components/MapComponent'; 
+import {getAuth, onAuthStateChanged} from "firebase/auth";
+
+
+
 
 const DormsPage = () => {
   const [reviewList, setReviewList] = useState([]);
   const [dormSelection, setDormSelection] = useState("Cary Quadrangle");
   const [updateTrigger, setUpdateTrigger] = useState(1);
-
-
+  const [userGrade, setUserGrade] = useState(""); 
+  const [userVal, setUserVal] = useState(null);
+  const Auth = getAuth();
+  onAuthStateChanged(Auth, (user) => {
+  if (user) {
+    setUserVal(user);
+  } else {
+    console.log("No user");
+  }
+})
   useEffect(() => {
     const reviewsCollectionRef = collection(db, "Reviews");
     const getReviewList = async () => {
@@ -39,9 +51,9 @@ const DormsPage = () => {
     console.log(reviewList.length);
   };
 
-  const updateReviews = () =>{
-    setUpdateTrigger(updateTrigger*-1);
-  }
+  const updateReviews = () => {
+    setUpdateTrigger(updateTrigger * -1);
+  };
 
   const calculateAverageRating = (dorm) => {
     const filteredReviews = reviewList.filter(review => review.dorm_name === dorm);
@@ -54,7 +66,7 @@ const DormsPage = () => {
     return (totalRating / filteredReviews.length).toFixed(2);
   };
 
-  console.log(calculateAverageRating("McCutcheon"));
+
 
   return (
     <>
@@ -74,7 +86,10 @@ const DormsPage = () => {
         <div className="reviews-container" style={{ display: 'flex', flexDirection: 'column', padding: '15px', flexGrow: 1 }}>
           <MapComponent />
             <div className='review-form-container'>
-            <ReviewForm /> 
+            {(
+              userVal && <ReviewForm dorm_name={dormSelection} updateReviews={updateReviews}/>
+            )}
+            
             </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', marginTop: 0 }}>
             {reviewList.length > 0 ? (
@@ -97,6 +112,7 @@ const DormsPage = () => {
       </div>
     </>
   );
-};
+  
+  };
 
 export default DormsPage;
