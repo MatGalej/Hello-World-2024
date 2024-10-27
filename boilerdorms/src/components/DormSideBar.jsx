@@ -63,7 +63,7 @@ const Sidebar = ({ onLinkClick , updateTrigger}) => {
   return (
     <ul className='dorm-options' style={{ listStyleType: 'none', padding: 3 }}>
       {dorms.map((dorm, index) => (
-        <li key={index} style={{ margin: '5px .5em' }}>
+        <li key={index} style={{ margin: '4px .5em' }}>
           <button
             onClick={() => handleLinkClick(index, dorm)}
             style={{
@@ -72,7 +72,7 @@ const Sidebar = ({ onLinkClick , updateTrigger}) => {
               fontSize: '.9em',
               backgroundColor: activeIndex === index ? 'lightblue' : "#DAAA00" ,
               border: '1px solid #ccc',
-              padding: '10px',
+              padding: '8px',
               cursor: 'pointer',
               borderRadius: '5px',
               transition: 'background-color 0.3s',

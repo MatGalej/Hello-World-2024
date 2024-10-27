@@ -61,7 +61,6 @@ const DormsPage = () => {
 
   const handleLinkClick = (link) => {
     setDormSelection(link);
-    console.log(reviewList.length);
   };
 
   const updateReviews = () => {
@@ -108,7 +107,7 @@ const DormsPage = () => {
             
             </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', marginTop: 0 }}>
-            {reviewList.length > 0 ? (
+            {reviewList.filter(review => review.dorm_name === dormSelection).length > 0 ? (
               reviewList.filter(review => review.dorm_name === dormSelection).map(review => (
                 <ReviewBox
                   key={review.id}
