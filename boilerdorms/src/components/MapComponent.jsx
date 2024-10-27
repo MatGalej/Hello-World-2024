@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   MapContainer,
   TileLayer,
@@ -32,28 +32,38 @@ const markers = [
   { position: [40.430566, -86.920629], description: "Tarkington" },
   { position: [40.422964, -86.911770], description: "Hawkins" },
   { position: [40.428467, -86.919533], description: "Frieda Parker" },
-  { position: [40.431920, -86.917980], description: "Cary Quad" },
+  { position: [40.431920, -86.917980], description: "Cary Quadrangle" },
   { position: [40.426734, -86.921001], description: "Windsor" },
   { position: [40.429501, -86.920690], description: "Wiley" },
   { position: [40.427827, -86.920124], description: "Winifred Parker" }
 ];
 
-export default function MapComponent() {
+
+
+const MapComponent = ({dormName}) => {
   const mapRef = useRef();
+
+  useEffect(() => {
+    
+    for(let i=0; i<markers.length; i++){
+      if(markers[i].description==dormName){
+        mapRef.current.setView(markers[i].position, 20); 
+      }
+    }
+
+  }, [dormName]);
 
   return (
     <div>
-      <MapContainer
-    center={center}
-    zoom={15}
-    style={{ 
-      width: '100%', 
-      height: '60vh', // Fills remaining viewport height below the header
-      borderRadius: '10px',
-      marginBottom: '10px',
-    }}
-    ref={mapRef}
-  >
+      <MapContainer center={center}
+                    zoom={15}
+                    style={{ 
+                      width: '100%', 
+                      height: '60vh', // Fills remaining viewport height below the header
+                      borderRadius: '10px',
+                      marginBottom: '10px',
+                    }}
+                    ref={mapRef}>
         <TileLayer
           url="https://api.maptiler.com/maps/outdoor-v2/{z}/{x}/{y}.png?key=r9VcUJXvffmbBImhSAM4"
         />
@@ -75,3 +85,5 @@ export default function MapComponent() {
     </div>
   );
 }
+
+export default MapComponent;

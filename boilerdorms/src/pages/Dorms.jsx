@@ -94,9 +94,9 @@ const DormsPage = () => {
         </div>
       </header>
       <div style={{ display: 'flex', gap: '20px', }}> {/* Adjusted gap to separate sidebar and content */}
-        <Sidebar onLinkClick={handleLinkClick} />
+        <Sidebar onLinkClick={handleLinkClick} updateTrigger={updateReviews}/>
         <div className="reviews-container" style={{ display: 'flex', flexDirection: 'column', padding: '15px', flexGrow: 1 }}>
-          <MapComponent />
+          <MapComponent dormName={dormSelection}/>
             <div className='review-form-container'>
             {(
               userVal && <ReviewForm dorm_name={dormSelection} 
