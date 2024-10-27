@@ -10,7 +10,9 @@ import MapComponent from '../components/MapComponent';
 
 const DormsPage = () => {
   const [reviewList, setReviewList] = useState([]);
-  const [dormSelection, setDormSelection] = useState("Meredith");
+  const [dormSelection, setDormSelection] = useState("Cary Quadrangle");
+  const [updateTrigger, setUpdateTrigger] = useState(1);
+
 
   useEffect(() => {
     const reviewsCollectionRef = collection(db, "Reviews");
@@ -26,7 +28,7 @@ const DormsPage = () => {
     };
 
     getReviewList();
-  }, []);
+  }, [updateTrigger]);
 
   useEffect(() => {
     console.log(dormSelection);
@@ -36,6 +38,10 @@ const DormsPage = () => {
     setDormSelection(link);
     console.log(reviewList.length);
   };
+
+  const updateReviews = () =>{
+    setUpdateTrigger(updateTrigger*-1);
+  }
 
   const calculateAverageRating = (dorm) => {
     const filteredReviews = reviewList.filter(review => review.dorm_name === dorm);
@@ -60,10 +66,10 @@ const DormsPage = () => {
           </header>
       </header>
       <div style={{ display: 'flex' }}>
-        <Sidebar onLinkClick={handleLinkClick} />
+        <Sidebar onLinkClick={handleLinkClick} updateTrigger={updateTrigger}/>
         <div className="reviews-container" style={{ padding: '20px', flexGrow: 1 }}>
           <h2>Selected Dorm: {dormSelection}</h2>
-          <ReviewForm dorm_name={dormSelection}></ReviewForm>
+          <ReviewForm dorm_name={dormSelection} updateReviews={updateReviews}></ReviewForm>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             {reviewList.filter(review => review.dorm_name === dormSelection).length > 0 ? (
               reviewList.filter(review => review.dorm_name === dormSelection).map(review => (
