@@ -154,6 +154,14 @@ button:active {
   font-size: 1.2em; /* Adds space between label and stars */
 }
 
+.reviews-container {
+  display: flex; 
+  justify-content: center;
+  flexDirection: column;
+  alignItems: center; 
+  width: 100%;
+}
+
 .star-rating {
   display: flex;
   font-size: 2em;
@@ -178,4 +186,17 @@ button:active {
   min-height: 3em;
   max-height: 8em;
   margin: 0;
+}
+
+.logout-button {
+  font-family: 'Space-Grotesk';
+  font-size: 1.2em;
+  border-radius: 10px;
+  padding: 0.5em;
+  margin: 2px 5px;
+  color: #FFFFFF;
+  background-color: #555960;
+  width: 125px;
+  border-style: none;
+  cursor: pointer;  
 }

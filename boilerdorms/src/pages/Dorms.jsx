@@ -58,6 +58,7 @@ const DormsPage = () => {
 
   return (
     <>
+      <div className='dorms-background'>
       <header className="header-dorms">
         <div className='back-button-container'>
           <a href='/'>
@@ -70,12 +71,12 @@ const DormsPage = () => {
       </header>
       <div style={{ display: 'flex', gap: '20px', }}> {/* Adjusted gap to separate sidebar and content */}
         <Sidebar onLinkClick={handleLinkClick} />
-        <div className="reviews-container" style={{ display: 'flex', flexDirection: 'column', padding: '10px', flexGrow: 1 }}>
+        <div className="reviews-container" style={{ display: 'flex', flexDirection: 'column', padding: '15px', flexGrow: 1 }}>
           <MapComponent />
             <div className='review-form-container'>
             <ReviewForm /> 
             </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0px', marginTop: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', marginTop: 0 }}>
             {reviewList.length > 0 ? (
               reviewList.filter(review => review.dorm_name === dormSelection).map(review => (
                 <ReviewBox
@@ -92,6 +93,7 @@ const DormsPage = () => {
             )}
           </div>
         </div>
+      </div>
       </div>
     </>
   );

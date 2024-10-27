@@ -26,6 +26,7 @@ function FrontPage() {
             </a>
           </div>
         </div>
+        <button className='logout-button'>Log Out</button>
       </div>
     </>
   );
