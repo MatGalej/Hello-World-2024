@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Make sure the body and html take the full height of the viewport */
+html,
+body {
+    height: 100%;
+    font-family: 'Space-Grotesk';
+}
+
+/* Full-page background container */
+.background-container {
+    position: relative;
+    height: 100vh; 
+    /* Full viewport height */
+    background-image: url('https://www.purdue.edu/home/wp-content/uploads/2024/04/Card1-Purdue-StadiumMall-2023_KAL_1361-1920x960-1.jpg');
+    /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Black overlay with 30% opacity */
+}
+
+.background-container .overlay .back-button {
+    font-family: 'Space-Grotesk';
+    font-size: 1.2em;
+    border-radius: 10px;
+    padding: 0.5em;
+    margin: 10px;
+    background-color: #555960;
+    color: #FFFFFF;
+    width: 125px;
+    border-style: none;
+}
+
+.center-overlay {
+    background-color: rgba(255, 255, 255, .6);
+    color: #555960;
+    text-align: center;
+    width: 50%;
+    margin: 5% auto;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+
+/* Formatting for the signup form */
+.signup-form {
+    display: block;
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+.signup-form .email input {
+    margin: 10px auto;
+    border-radius: 5px;
+    background-color: white;
+    width: 40%;
+    color: #555960;
+    text-align: center;
+    height: 2em;
+    border: #555960;
+    font-family: 'Space-Grotesk';
+}
+
+.signup-form .password input {
+    margin: 10px auto;
+    border-radius: 5px;
+    width: 40%;
+    text-align: center;
+    height: 2em;
+    border: #555960;
+    font-family: 'Space-Grotesk';
+}
+
+.signup-form .grade select {
+    margin: 10px auto;
+    border-radius: 5px;   
+    width: 40%;
+    text-align: center;
+    height: 2em;
+    border: #555960;
+    color: #555960;
+    font-family: 'Space-Grotesk';
+}
+
+.signup-form .signup-button {
+    margin: 2em 0 auto;
+    font-size: 1em;
+    padding: 2px 5px;
+    border-radius: 5px;
+    width: 25%;
+    background-color: #DAAA00;
+    border: #555960;
+    font-family: 'Space-Grotesk';
+}
+
+/* Button effects */
+
+button:hover {
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+    /* Adds shadow on hover */
+}
+
+button:active {
+    box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.2);
+    /* Smaller shadow to appear pressed */
+    transform: translateY(2px);
+    /* Moves the button down slightly */
+}
+
+/* Error alert*/
+.error-box {
+    background-color: #ffcccc;
+    color: #d8000c;
+    border: 1px solid #d8000c;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: 'Space-Grotesk';
+}
