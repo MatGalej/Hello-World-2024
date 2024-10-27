@@ -100,7 +100,10 @@ const DormsPage = () => {
           <MapComponent />
             <div className='review-form-container'>
             {(
-              userVal && <ReviewForm dorm_name={dormSelection} updateReviews={updateReviews}/>
+              userVal && <ReviewForm dorm_name={dormSelection} 
+              updateReviews={updateReviews}
+              grade={userGrade}
+              />
             )}
             
             </div>
@@ -111,7 +114,7 @@ const DormsPage = () => {
                   key={review.id}
                   rating={review.rating}
                   review={review.text}
-                  grade={userGrade}
+                  grade = {review.grade}
                 />
               ))
             ) : (

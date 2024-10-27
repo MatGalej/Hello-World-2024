@@ -8,7 +8,7 @@ const minRating=1;
 const defaultRating=0;
 const maxReviewLength=2000;
 
-const ReviewForm = ({dorm_name, updateReviews}) =>{    
+const ReviewForm = ({dorm_name, updateReviews, grade}) =>{    
     const [review, setReview] = useState("");
     const [rating, setRating] = useState(defaultRating);
     const [hoverRating, setHoverRating] = useState(0);
@@ -60,7 +60,8 @@ const ReviewForm = ({dorm_name, updateReviews}) =>{
                 rating: rating,
                 text: review,
                 likes: 0,
-                dislikes: 0
+                dislikes: 0,
+                grade: grade
             }
             const reviewDoc = await addDoc(collection(db,"Reviews"),object);
             setRating(0);
