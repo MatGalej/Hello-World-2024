@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   MapContainer,
   TileLayer,
@@ -39,6 +39,8 @@ const markers = [
 ];
 
 export default function MapComponent() {
+  const mapRef = useRef();
+
   return (
     <div style={{
       display: 'flex',
@@ -51,12 +53,22 @@ export default function MapComponent() {
         center={center}
         zoom={15}
         style={{ width: '30vw', height: '50vw' }}
+        ref={mapRef}
       >
         <TileLayer
           url="https://api.maptiler.com/maps/outdoor-v2/{z}/{x}/{y}.png?key=r9VcUJXvffmbBImhSAM4"
         />
         {markers.map((marker, index) => (
-          <Marker key={index} position={marker.position} icon={customMarkerIcon}>
+          <Marker
+            key={index}
+            position={marker.position}
+            icon={customMarkerIcon}
+            eventHandlers={{
+              click: () => {
+                mapRef.current.setView(marker.position, 20); 
+              },
+            }}
+          >
             <Popup>{marker.description}</Popup>
           </Marker>
         ))}
