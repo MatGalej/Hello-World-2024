@@ -155,10 +155,6 @@ button:active {
 }
 
 .reviews-container {
-  display: flex; 
-  justify-content: center;
-  flexDirection: column;
-  alignItems: center; 
   width: 100%;
 }
 
