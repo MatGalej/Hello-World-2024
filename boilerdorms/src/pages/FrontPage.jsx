@@ -35,6 +35,7 @@ function FrontPage() {
   const logout = () => {
     if (userVal != null) {
       auth.signOut();
+      window.location.reload()
     } 
   }
 
@@ -47,9 +48,16 @@ function FrontPage() {
         <a href='/Signup'>
           <button id='Signup'>Sign Up</button>
         </a>
-        <a href='/Login'>
-          <button id='Signin'>Log In</button>
-        </a>
+        
+        {userVal && (
+          <button className='logout-button' onClick={logout}>Log Out</button>
+        )}
+
+        {!userVal && (
+          <a href='/Login'>
+            <button id='Signin'>Log In</button>
+          </a>
+        )}
       </header>
 
       <div className='front-page'>
@@ -62,11 +70,6 @@ function FrontPage() {
             </a>
           </div>
         </div>
-
-
-        <button className='logout-button' onClick={logout}>Log Out</button>
-
-
       </div>
     </>
   );
