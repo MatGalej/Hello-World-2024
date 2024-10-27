@@ -1,26 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const StarRating = ({ maxRating = 5, defaultRating = 0 }) => {
-  const [rating, setRating] = useState(defaultRating);
-  const [hoverRating, setHoverRating] = useState(0);
-
-  const handleRating = (value) => {
-    setRating(value);
-  };
-
-  const handleHover = (value) => {
-    setHoverRating(value);
-  };
-
+const StarRating = ({ rating }) => {
   return (
     <div>
-      {[...Array(maxRating)].map((_, index) => (
+      {[...Array(5)].map((_, index) => (
         <span 
           key={index}
-          onClick={() => handleRating(index + 1)}
-          onMouseEnter={() => handleHover(index + 1)}
-          onMouseLeave={() => handleHover(0)}
-          style={{ cursor: 'pointer', color: index < (hoverRating || rating) ? 'gold' : 'gray' }}
+          style={{ color: index < rating ? 'gold' : 'gray' }}
         >
           ★
         </span>
