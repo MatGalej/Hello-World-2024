@@ -15,7 +15,7 @@ function FrontPage() {
           <button id='Signin'>Log In</button>
         </a>
       </header>
-      
+
       <div className='front-page'>
         <div>
           <h1>Boiler Dorms</h1>

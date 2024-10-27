@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -50,6 +48,7 @@ body {
 
 .center-overlay {
     background-color: rgba(255, 255, 255, .45);
+    color: #555960;
     text-align: center;
     width: 50%;
     margin: 5% auto;
@@ -75,6 +74,7 @@ body {
     text-align: center;
     height: 2em;
     border: #555960;
+    font-family: 'Space-Grotesk';
 }
 
 .signup-form .password input {
@@ -84,6 +84,7 @@ body {
     text-align: center;
     height: 2em;
     border: #555960;
+    font-family: 'Space-Grotesk';
 }
 
 .signup-form .grade select {
@@ -94,6 +95,7 @@ body {
     height: 2em;
     border: #555960;
     color: #555960;
+    font-family: 'Space-Grotesk';
 }
 
 .signup-form .signup-button {
@@ -104,6 +106,7 @@ body {
     width: 25%;
     background-color: #DAAA00;
     border: #555960;
+    font-family: 'Space-Grotesk';
 }
 
 /* Button effects */
@@ -129,4 +132,5 @@ button:active {
     padding: 10px;
     margin-bottom: 10px;
     text-align: center;
+    font-family: 'Space-Grotesk';
 }

@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Space-Grotesk';
+  src: url('./fonts/SpaceGrotesk-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Full-page background image with overlay */
 .background-image {
   position: fixed;
@@ -52,9 +59,9 @@
 }
 
 .front-page h1 {
-  margin-top: 30vh;
+  margin-top: 25vh;
   font-family: 'Space-Grotesk';
-  font-size: 48px;
+  font-size: 8em;
   text-align: center;
   color: #DAAA00;
 }
@@ -81,7 +88,7 @@
   margin: 5px;
   color: #FFFFFF;
   background-color: #DAAA00;
-  width: 125px;
+  width: 15%;
 }
 
 /* Button effects */
