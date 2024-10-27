@@ -61,7 +61,6 @@ const DormsPage = () => {
 
   const handleLinkClick = (link) => {
     setDormSelection(link);
-    console.log(reviewList.length);
   };
 
   const updateReviews = () => {
@@ -100,18 +99,21 @@ const DormsPage = () => {
           <MapComponent />
             <div className='review-form-container'>
             {(
-              userVal && <ReviewForm dorm_name={dormSelection} updateReviews={updateReviews}/>
+              userVal && <ReviewForm dorm_name={dormSelection} 
+              updateReviews={updateReviews}
+              grade={userGrade}
+              />
             )}
             
             </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', marginTop: 0 }}>
-            {reviewList.length > 0 ? (
+            {reviewList.filter(review => review.dorm_name === dormSelection).length > 0 ? (
               reviewList.filter(review => review.dorm_name === dormSelection).map(review => (
                 <ReviewBox
                   key={review.id}
                   rating={review.rating}
                   review={review.text}
-                  grade={userGrade}
+                  grade = {review.grade}
                 />
               ))
             ) : (
