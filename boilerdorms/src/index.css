@@ -114,3 +114,27 @@ button:active {
 .nav-links a:hover {
   color: #0f9696; /* Hover color */
 }
+.review-box {
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 16px; /* Space inside the box */
+  margin: 16px; /* Space outside the box */
+  background-color: #f9f9f9; /* Light background color */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.review-box-title {
+  font-size: 1.5em; /* Larger font size for title */
+  color: #333; /* Dark color for title */
+  margin-bottom: 8px; /* Space below the title */
+}
+
+.star-rating-component {
+  margin: 8px 0; /* Space above and below the star rating */
+}
+
+.review-box-text {
+  font-size: 1em; /* Standard font size for text */
+  color: #666; /* Medium gray for review text */
+  line-height: 1.5; /* Better readability */
+}

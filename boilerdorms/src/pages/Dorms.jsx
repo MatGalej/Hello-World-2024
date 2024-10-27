@@ -5,6 +5,7 @@ import { db } from './../config/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import Sidebar from '../components/DormSideBar';
 import ReviewForm from '../components/ReviewForm';
+import ReviewBox from '../components/ReviewBox';
 
 const DormsPage = () => {
   const [reviewList, setReviewList] = useState([]);
@@ -53,24 +54,23 @@ const DormsPage = () => {
           <h2>Selected Dorm: {dormSelection}</h2>
           <ReviewForm></ReviewForm>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            {(reviewList.length > 0) ? (
-              reviewList
-                .filter(review => review.dorm_name === dormSelection) 
-                .map(review => (
-                  <div key={review.id} className="review">
-                    <h3>{review.dorm_name}</h3>
-                    <p>Rating: {review.rating}</p>
-                    <p>{review.text}</p>
-                  </div>
-                ))
-            ) : (
-              <div>
-                <p>No reviews available.</p>
-              </div>
-            )}
-          </div>
+           {reviewList.length > 0 ? (
+             reviewList.filter(review => review.dorm_name === dormSelection).map(review => (
+               <ReviewBox 
+                 key={review.id} 
+                 rating={review.rating} 
+                 review={review.text} 
+                 grade={review.dorm_name} 
+               />
+              ))
+             ) : (
+          <div>
+           <p>No reviews available.</p>
+         </div>
+        )}
         </div>
-      </div>
+     </div>
+    </div>
     </>
   );
 };
