@@ -9,31 +9,26 @@ import ReviewBox from '../components/ReviewBox';
 import MapComponent from '../components/MapComponent'; 
 
 const DormsPage = () => {
-  const [reviewList, setReviewList] = useState(() => {
-    // Try to get cached data from local storage
-    const cachedData = localStorage.getItem('reviewList');
-    return cachedData ? JSON.parse(cachedData) : [];
-  });
-  const [dormSelection, setDormSelection] = useState("Meredith");
+  const [reviewList, setReviewList] = useState([]);
+  const [dormSelection, setDormSelection] = useState("Cary Quadrangle");
+  const [updateTrigger, setUpdateTrigger] = useState(1);
+
 
   useEffect(() => {
-    // Fetch data only if reviewList is empty
-    const fetchReviews = async () => {
-      if (reviewList.length === 0) {
-        const reviewsCollectionRef = collection(db, "Reviews");
-        try {
-          const data = await getDocs(reviewsCollectionRef);
-          const filteredData = data.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-          setReviewList(filteredData);
-          localStorage.setItem('reviewList', JSON.stringify(filteredData)); // Cache in local storage
-        } catch (err) {
-          console.error(err);
-        }
+    const reviewsCollectionRef = collection(db, "Reviews");
+    const getReviewList = async () => {
+      try {
+        const data = await getDocs(reviewsCollectionRef);
+        const filteredData = data.docs.map(doc => ({ ...doc.data(), id: doc.id })); 
+        setReviewList(filteredData);
+        console.log(filteredData);
+      } catch (err) {
+        console.error(err);
       }
     };
 
-    fetchReviews();
-  }, [reviewList]); // Only fetch if reviewList is empty
+    getReviewList();
+  }, [updateTrigger]);
 
   useEffect(() => {
     console.log(dormSelection);
@@ -43,6 +38,10 @@ const DormsPage = () => {
     setDormSelection(link);
     console.log(reviewList.length);
   };
+
+  const updateReviews = () =>{
+    setUpdateTrigger(updateTrigger*-1);
+  }
 
   const calculateAverageRating = (dorm) => {
     const filteredReviews = reviewList.filter(review => review.dorm_name === dorm);
@@ -56,7 +55,6 @@ const DormsPage = () => {
   };
 
   console.log(calculateAverageRating("McCutcheon"));
-  console.log({dormSelection})
   
   return (
     <>
@@ -68,10 +66,10 @@ const DormsPage = () => {
           </header>
       </header>
       <div style={{ display: 'flex' }}>
-        <Sidebar onLinkClick={handleLinkClick} />
+        <Sidebar onLinkClick={handleLinkClick} updateTrigger={updateTrigger}/>
         <div className="reviews-container" style={{ padding: '20px', flexGrow: 1 }}>
           <h2>Selected Dorm: {dormSelection}</h2>
-          <ReviewForm dorm_name={dormSelection}></ReviewForm>
+          <ReviewForm dorm_name={dormSelection} updateReviews={updateReviews}></ReviewForm>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             {reviewList.filter(review => review.dorm_name === dormSelection).length > 0 ? (
               reviewList.filter(review => review.dorm_name === dormSelection).map(review => (

@@ -8,7 +8,7 @@ const minRating=1;
 const defaultRating=0;
 const maxReviewLength=2000;
 
-const ReviewForm = ({dorm_name}) =>{    
+const ReviewForm = ({dorm_name, updateReviews}) =>{    
     const [review, setReview] = useState("");
     const [rating, setRating] = useState(defaultRating);
     const [hoverRating, setHoverRating] = useState(0);
@@ -52,30 +52,25 @@ const ReviewForm = ({dorm_name}) =>{
             alert("Invalid rating: Make sure your review is between "+minRating+" and "+maxRating+" stars!");
             return;
         }
-        const object = {
-            id: "placeHolderID",
-            dorm_name: dorm_name,
-            rating: rating,
-            text: review,
-            likes: 0,
-            dislikes: 0
-        }
         
-        const reviewDoc = await addDoc(collection(db,"Reviews"),object);
-        setRating(0);
-        setReview('');
-        document.getElementById("reviewTextField").value = "";
-
-        window.location.reload();
-
-        /*
         try{
-            
-
+            const object = {
+                id: "placeHolderID",
+                dorm_name: dorm_name,
+                rating: rating,
+                text: review,
+                likes: 0,
+                dislikes: 0
+            }
+            const reviewDoc = await addDoc(collection(db,"Reviews"),object);
+            setRating(0);
+            setReview('');
+            document.getElementById("reviewTextField").value = "";
+    
+            updateReviews();
         }catch(error){
             console.trace("Error creating review document");
         }
-        */
     }
 
     return (
