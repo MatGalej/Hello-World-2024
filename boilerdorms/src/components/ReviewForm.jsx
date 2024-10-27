@@ -63,9 +63,9 @@ const ReviewForm = ({dorm_name, updateReviews, grade}) =>{
                 dislikes: 0,
                 grade: grade
             }
-            const reviewDoc = await addDoc(collection(db,"Reviews"),object);
             setRating(0);
             setReview('');
+            const reviewDoc = await addDoc(collection(db,"Reviews"),object);
             document.getElementById("reviewTextField").value = "";
     
             updateReviews();
