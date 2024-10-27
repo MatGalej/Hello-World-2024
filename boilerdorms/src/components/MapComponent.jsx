@@ -47,9 +47,10 @@ export default function MapComponent() {
     center={center}
     zoom={15}
     style={{ 
-      width: '81vw', 
+      width: '100%', 
       height: '60vh', // Fills remaining viewport height below the header
-      borderRadius: '10px'
+      borderRadius: '10px',
+      marginBottom: '10px',
     }}
     ref={mapRef}
   >

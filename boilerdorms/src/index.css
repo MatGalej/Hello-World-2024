@@ -136,3 +136,44 @@ button:active {
   padding-right: 0.5em;
 }
 
+.review-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers children horizontally */
+  text-align: center;
+  margin: 5px;
+  font-family: 'Space-Grotesk';
+  color: white;
+  background-color: #555960;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+}
+
+.review-div label {
+  font-size: 1.2em; /* Adds space between label and stars */
+}
+
+.star-rating {
+  display: flex;
+  font-size: 2em;
+  justify-content: center; /* Centers stars horizontally */
+  margin-bottom: 10px; /* Adds space between stars and input field */
+}
+
+#submit-review {
+  display: flex;
+  font-family: 'Space-Grotesk';
+  border-radius: 10px;
+  padding: 0.5em;
+  margin-top: 1em;
+  background-color: #DAAA00;
+}
+
+#reviewTextField {
+  font-family: 'Space-Grotesk';
+  width: 80%;
+  border-radius: 5px;
+  height: 2em;
+  margin: 0;
+}

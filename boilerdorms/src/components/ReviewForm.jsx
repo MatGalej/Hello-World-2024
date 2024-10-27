@@ -76,9 +76,9 @@ const ReviewForm = ({dorm_name, updateReviews}) =>{
     return (
         <div className='review-div'>
             <label>Write a review</label>
-            <div>{StarRating(maxRating)}</div>
+            <div className='star-rating'>{StarRating(maxRating)}</div>
             <input id="reviewTextField" name = "review" placeholder= "Write your review here..." type="text" onChange={(e) => setReview(e.target.value)}/>
-            <button type="button" onClick={(e)=>{handleSubmit()}}>Submit review</button>
+            <button id='submit-review' type="button" onClick={(e)=>{handleSubmit()}}>Submit review</button>
         </div>
     );
 }

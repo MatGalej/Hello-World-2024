@@ -72,8 +72,10 @@ const DormsPage = () => {
         <Sidebar onLinkClick={handleLinkClick} />
         <div className="reviews-container" style={{ display: 'flex', flexDirection: 'column', padding: '10px', flexGrow: 1 }}>
           <MapComponent />
+            <div className='review-form-container'>
             <ReviewForm /> 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0px', marginTop: 0 }}> {/* Control review spacing */}
+            </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0px', marginTop: 0 }}>
             {reviewList.length > 0 ? (
               reviewList.filter(review => review.dorm_name === dormSelection).map(review => (
                 <ReviewBox

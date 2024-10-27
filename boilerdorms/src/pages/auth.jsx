@@ -22,7 +22,7 @@ export const Auth = () => {
         }
 
         if (!Email.endsWith(allowedDomain)) {
-            setError(`Only ${allowedDomain} emails are allowed to sign in.`);
+            setError(`Only ${allowedDomain} emails are allowed to sign up.`);
             return;
         }
 
