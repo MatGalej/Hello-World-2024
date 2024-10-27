@@ -6,19 +6,39 @@ import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
 import Sidebar from '../components/DormSideBar';
 import ReviewForm from '../components/ReviewForm';
 import ReviewBox from '../components/ReviewBox';
-import MapComponent from '../components/MapComponent'; 
-import {getAuth, onAuthStateChanged } from "firebase/auth";
+import MapComponent from '../components/MapComponent';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-const Auth = getAuth();
-onAuthStateChanged(auth, (user) => {
+
+
+const logout = () => {
   if (user) {
-    console.log(user);
+    auth.signOut();
   } else {
     console.log("No user");
   }
-})
+}
+
 
 function FrontPage() {
+  const [userVal, setUserVal] = useState(null);
+
+  const Auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUserVal(user);
+    } else {
+      console.log("No user");
+    }
+  })
+
+  const logout = () => {
+    if (userVal != null) {
+      auth.signOut();
+    } 
+  }
+
+
   return (
     <>
       <div className="background-image"></div>
@@ -42,7 +62,11 @@ function FrontPage() {
             </a>
           </div>
         </div>
-        <button className='logout-button'>Log Out</button>
+
+
+        <button className='logout-button' onClick={logout}>Log Out</button>
+
+
       </div>
     </>
   );
