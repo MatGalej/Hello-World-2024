@@ -119,3 +119,14 @@ button:active {
     transform: translateY(2px);
     /* Moves the button down slightly */
 }
+
+/* Error alert*/
+.error-box {
+    background-color: #ffcccc;
+    color: #d8000c;
+    border: 1px solid #d8000c;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
