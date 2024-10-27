@@ -1,30 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
-
-.front-page body h1 {
-  margin-top: 30vh;
-  font-family: 'Space-Grotesk';
-  font-size: 48px;
-  text-align: center;
-  color: #DAAA00;
+/* Full-page background image with overlay */
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://assets.isu.pub/document-structure/230703173419-ec37610e083778f6ad81084445d66cda/v1/7285f30d1757adc0a9af6224a21f2e31.jpeg'); /* Your image URL */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -2;
 }
 
-.front-page body p {
-  text-align: center;
-  font-family: 'Space-Grotesk';
-  font-size: 1.5em;
-  margin-top: .3em;
+/* Overlay effect to darken the image */
+.background-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Dark overlay with 50% opacity */
+  z-index: -1;
 }
 
-button:hover {
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-  /* Adds shadow on hover */
+.front-header {
+  display: flex;
+  justify-content: flex-end; /* Aligns buttons to the right */
+  padding: 10px;
+  position: relative;
+  z-index: 1;
 }
 
-button:active {
-  box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.5);
-  /* Smaller shadow to appear pressed */
-  transform: translateY(2px);
-  /* Moves the button down slightly */
+/* Existing styles */
+.front-page,
+.front-header {
+  position: relative;
+  z-index: 1; /* Ensures content appears above the background and overlay */
+  color: white;
 }
 
 .front-header button {
@@ -38,9 +51,24 @@ button:active {
   border-style: none;
 }
 
+.front-page h1 {
+  margin-top: 30vh;
+  font-family: 'Space-Grotesk';
+  font-size: 48px;
+  text-align: center;
+  color: #DAAA00;
+}
+
+.front-page p {
+  text-align: center;
+  font-family: 'Space-Grotesk';
+  font-size: 1.5em;
+  margin-top: .3em;
+}
+
 .dorm-button-container {
   text-align: center;
-  margin-top: 2em
+  margin-top: 2em;
 }
 
 .dorm-button {
@@ -56,85 +84,20 @@ button:active {
   width: 125px;
 }
 
-
-.front-header #Signup {
-  background-color : #DAAA00;
-  border-color: #DAAA00;
-
+/* Button effects */
+button:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-.front-header #Signin {
+button:active {
+  box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.5);
+  transform: translateY(2px);
+}
+
+#Signup {
+  background-color: #DAAA00;
+}
+
+#Signin {
   background-color: #555960;
-  border-color: #555960;
-}
-
-.front-header {
-  background-color: #FFFFFF; /* Teal background */
-  padding: 5px; /* Increased padding for spaciousness */
-  text-align: right; /* Centered text */
-  border: 0px solid hsl(0, 0%, 80%);
-  border-radius: 3px; /* Softened corners */
-}
-
-.front-header h1 {
-  margin: 0; /* Remove default margin */
-  font-size: 2rem; /* Increased font size */
-  font-weight: bold; /* Bold text */
-}
-
-.navbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #6cbcbc; /* Keep this color */
-  color: #bfe4e4;
-  padding: 5px; /* Adjusted padding */
-  border: 1px solid hsl(0, 0%, 80%);;
-  border-radius: 4px; /* Softened corners */
-}
-
-.nav-links {
-  list-style-type: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links li {
-  margin: 0 1rem; /* Updated margin for better spacing */
-}
-
-.nav-links a {
-  font-weight: bold; /* Bold text */
-  color: #196b6b; /* Link color */
-  text-decoration: none;
-  transition: color 0.3s; /* Smooth transition for hover */
-}
-
-.nav-links a:hover {
-  color: #0f9696; /* Hover color */
-}
-.review-box {
-  border: 1px solid #ddd; /* Light border */
-  border-radius: 8px; /* Rounded corners */
-  padding: 16px; /* Space inside the box */
-  margin: 16px; /* Space outside the box */
-  background-color: #f9f9f9; /* Light background color */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-.review-box-title {
-  font-size: 1.5em; /* Larger font size for title */
-  color: #333; /* Dark color for title */
-  margin-bottom: 8px; /* Space below the title */
-}
-
-.star-rating-component {
-  margin: 8px 0; /* Space above and below the star rating */
-}
-
-.review-box-text {
-  font-size: 1em; /* Standard font size for text */
-  color: #666; /* Medium gray for review text */
-  line-height: 1.5; /* Better readability */
 }
