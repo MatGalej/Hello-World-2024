@@ -94,7 +94,13 @@ useEffect(()=> {
             <button className='dorm-button'>View Dorms</button>
           </a>
         </div>
+        
+        <div className='disclaimer'>
+          <p><p>Please Note: we are <i>not</i> affiliated with Purdue Univeristy</p></p>
+          <img url='../assets/github-mark-white.png'></img>
+        </div>
       </div>
+
     </>
   );
 }

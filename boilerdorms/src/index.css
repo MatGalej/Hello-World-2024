@@ -229,3 +229,8 @@ button:active {
 .fade-out {
   opacity: 0; /* Makes the element transparent */
 }
+
+.disclaimer {
+  font-size: .3em;
+  margin-top: 15vb;
+}
