@@ -134,3 +134,8 @@ button:active {
     text-align: center;
     font-family: 'Space-Grotesk';
 }
+
+#redirect {
+    font-size: .8em;
+    padding-bottom: 2em; 
+  }

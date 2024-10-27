@@ -19,6 +19,9 @@ const Login = () => {
               <h1>Please provide the information below to login</h1>
               <p><i>Please note: You <b>must</b> use a @purdue.edu email to login</i></p>
               <LoginAuth></LoginAuth>
+              <a id='redirect' href='/Signup'>
+                <p>No Account?</p>
+              </a>
             </div>
           </body>
 
