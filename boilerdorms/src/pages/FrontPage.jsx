@@ -23,14 +23,17 @@ const logout = () => {
 function FrontPage() {
   const [userVal, setUserVal] = useState(null);
 
-  const Auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setUserVal(user);
-    } else {
-      console.log("No user");
-    }
-  })
+  useEffect(()=> {
+    const Auth = getAuth();
+    onAuthStateChanged(Auth, (user) => {
+      if (user) {
+        setUserVal(user);
+        console.log(user);
+      } else {
+        console.log("No user");
+      }
+    })
+  },[])
 
   const logout = () => {
     if (userVal != null) {

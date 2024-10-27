@@ -10,22 +10,25 @@ import MapComponent from '../components/MapComponent';
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 
 
-
-
 const DormsPage = () => {
   const [reviewList, setReviewList] = useState([]);
   const [dormSelection, setDormSelection] = useState("Cary Quadrangle");
   const [updateTrigger, setUpdateTrigger] = useState(1);
   const [userGrade, setUserGrade] = useState(""); 
   const [userVal, setUserVal] = useState(null);
-  const Auth = getAuth();
-  onAuthStateChanged(Auth, (user) => {
-  if (user) {
-    setUserVal(user);
-  } else {
-    console.log("No user");
-  }
-})
+ 
+  useEffect(()=> {
+    const Auth = getAuth();
+    onAuthStateChanged(Auth, (user) => {
+      if (user) {
+        setUserVal(user);
+      } else {
+        console.log("No user");
+      }
+    })
+  },[])
+  
+  
   useEffect(() => {
     const reviewsCollectionRef = collection(db, "Reviews");
     const getReviewList = async () => {
@@ -48,7 +51,6 @@ const DormsPage = () => {
 
   const handleLinkClick = (link) => {
     setDormSelection(link);
-    console.log(reviewList.length);
   };
 
   const updateReviews = () => {
