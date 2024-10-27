@@ -2,7 +2,7 @@
 ## Overview
 Boiler Dorms is a simple review website for Purdue Residence Halls built in less than a day.
 ## Technologies
-- [React](https://react.dev/), JavaScript, HTML, CSS for frontend and interacting with database
+- [React](https://react.dev/), JavaScript for frontend and interacting with database
 - [Firebase](https://firebase.google.com/) for user authentication and database
 - [Leaflet](https://leafletjs.com/) for interactive map interface
 ## Features
