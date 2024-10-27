@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './../index.css';
-import Navbar from './../components/NavBar';
 import { db, auth } from './../config/firebase';
 import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
 import Sidebar from '../components/DormSideBar';
 import ReviewForm from '../components/ReviewForm';
 import ReviewBox from '../components/ReviewBox';
 import MapComponent from '../components/MapComponent'; 
-import {getAuth, onAuthStateChanged} from "firebase/auth";
-
-
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const DormsPage = () => {
   const [reviewList, setReviewList] = useState([]);
@@ -18,14 +14,31 @@ const DormsPage = () => {
   const [updateTrigger, setUpdateTrigger] = useState(1);
   const [userGrade, setUserGrade] = useState(""); 
   const [userVal, setUserVal] = useState(null);
+  
   const Auth = getAuth();
-  onAuthStateChanged(Auth, (user) => {
-  if (user) {
-    setUserVal(user);
-  } else {
-    console.log("No user");
-  }
-})
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(Auth, async (user) => {
+      if (user) {
+        setUserVal(user);
+        
+        const userDocRef = doc(db, "users", user.uid); 
+        const userDoc = await getDoc(userDocRef);
+        
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          setUserGrade(userData.grade); 
+        } else {
+          console.log("No user data found");
+        }
+      } else {
+        console.log("No user");
+      }
+    });
+
+    return () => unsubscribe(); 
+  }, [Auth]);
+
   useEffect(() => {
     const reviewsCollectionRef = collection(db, "Reviews");
     const getReviewList = async () => {
@@ -98,7 +111,7 @@ const DormsPage = () => {
                   key={review.id}
                   rating={review.rating}
                   review={review.text}
-                  grade={review.dorm_name} // Explicitly remove margin from each ReviewBox
+                  grade={userGrade}
                 />
               ))
             ) : (
