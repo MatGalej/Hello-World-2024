@@ -33,7 +33,7 @@
   z-index: -1;
 }
 
-.front-header {
+.user-buttons {
   display: flex;
   justify-content: flex-end;
   /* Aligns buttons to the right */
@@ -195,4 +195,31 @@ button:active {
   width: 125px;
   border-style: none;
   cursor: pointer;  
+}
+
+.success-box {
+  background-color: #00d8287f;
+  color: #00d828;
+  border: 1px solid #00d828;
+  border-radius: 10px;
+  padding: 0.5em;
+  margin: 2px 5px;
+  text-align: center;
+  width: 100%;
+  font-family: 'Space-Grotesk';
+}
+
+.user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.confirmation {
+  display: inline-block;
+  margin-left: 10px;
+  /* Optional: Set a min-width if you want the box to appear uniform in size */
 }
