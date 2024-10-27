@@ -51,7 +51,7 @@ const DormsPage = () => {
         <Sidebar onLinkClick={handleLinkClick} />
         <div className="reviews-container" style={{ padding: '20px', flexGrow: 1 }}>
           <h2>Selected Dorm: {dormSelection}</h2>
-          <ReviewForm></ReviewForm>
+          <ReviewForm dorm = {String(dormSelection)}></ReviewForm>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             {(reviewList.length > 0) ? (
               reviewList
