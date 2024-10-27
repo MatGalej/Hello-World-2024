@@ -200,3 +200,14 @@ button:active {
   border-style: none;
   cursor: pointer;  
 }
+
+.success-box {
+  background-color: #ffcccc;
+  color: #00d828;
+  border: 1px solid #00d828;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-family: 'Space-Grotesk';
+}
