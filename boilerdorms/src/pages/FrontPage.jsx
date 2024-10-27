@@ -21,24 +21,34 @@ function FrontPage() {
     } else {
       console.log("No user");
     }
-  })
+  });
+
+  useEffect(() => {
+    if (success) {
+      hideElementAfterDelay("success-box", 3000); // 3 seconds delay
+    }
+  }, [success]);
 
   const logout = () => {
     if (userVal != null) {
       auth.signOut();
       SetSuccessLogin(false);
-      window.location.reload()
+      window.location.reload();
     }
-  }
+  };
 
   function hideElementAfterDelay(elementId, delay) {
     setTimeout(() => {
       const element = document.getElementById(elementId);
       if (element) {
-        element.style.display = "none";
+        element.classList.add("fade-out"); // Adds fade-out class
+        setTimeout(() => {
+          element.style.display = "none"; // Fully hides after fade-out
+        }, 500); // Matches the CSS transition duration
       }
     }, delay);
   }
+  
 
   return (
     <>
@@ -48,14 +58,13 @@ function FrontPage() {
         <div className="user-header">
           <div className='confirmation'>
             {success && (
-              <div className='success-box'>
+              <div id="success-box" className='success-box'>
                 <p>Logged In Successfully!</p>
               </div>
             )}
           </div>
 
           <div className='user-buttons'>
-            
             {!userVal && (
               <a href='/Signup'>
                 <button id='Signup'>Sign Up</button>
@@ -74,8 +83,6 @@ function FrontPage() {
           </div>
         </div>
       </header>
-
-
 
       <div className='front-page'>
         <h1>Boiler Dorms</h1>

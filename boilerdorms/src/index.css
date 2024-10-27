@@ -211,6 +211,7 @@ button:active {
   text-align: center;
   width: 100%;
   font-family: 'Space-Grotesk';
+  transition: opacity 0.5s ease-out; /* Smooth transition */
 }
 
 .user-header {
@@ -226,4 +227,9 @@ button:active {
   display: inline-block;
   margin-left: 10px;
   /* Optional: Set a min-width if you want the box to appear uniform in size */
+}
+
+
+.fade-out {
+  opacity: 0; /* Makes the element transparent */
 }
