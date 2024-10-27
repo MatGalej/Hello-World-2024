@@ -137,5 +137,18 @@ button:active {
 
 #redirect {
     font-size: .8em;
-    padding-bottom: 2em; 
+    padding-bottom: 2em;
+    color: #555960; 
+    text-decoration: none;
   }
+
+#redirect a:hover {
+    color: #DAAA00;
+    box-shadow: 0px 4px 8px rgba(0 , 0, 0, 0.2);
+}  
+
+#redirect a:active {
+    color: #DAAA00 ;
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+    translate: 2px;
+}

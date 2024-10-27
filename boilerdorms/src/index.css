@@ -178,6 +178,7 @@ button:active {
   font-family: 'Space-Grotesk';
   width: 80%;
   max-width: 80%;
+  min-width: 80%;
   border-radius: 5px;
   min-height: 3em;
   max-height: 8em;
@@ -233,4 +234,8 @@ button:active {
 .disclaimer {
   font-size: .3em;
   margin-top: 15vb;
+}
+
+.selected-dorm {
+  margin-right: 10px;
 }

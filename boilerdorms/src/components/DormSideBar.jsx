@@ -70,7 +70,7 @@ const Sidebar = ({ onLinkClick , updateTrigger}) => {
               width: '200px',
               fontFamily: 'Space-Grotesk',
               fontSize: '.9em',
-              backgroundColor: activeIndex === index ? 'lightblue' : "#DAAA00" ,
+              backgroundColor: activeIndex === index ? 'rgba(0,0,0,.5)' : "#DAAA00" ,
               border: '1px solid #ccc',
               padding: '8px',
               cursor: 'pointer',
