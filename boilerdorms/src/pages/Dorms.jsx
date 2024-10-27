@@ -34,6 +34,18 @@ const DormsPage = () => {
   const handleLinkClick = (link) => {
     setDormSelection(link);
   };
+  const calculateAverageRating = (dorm) => {
+    const filteredReviews = reviewList.filter(review => review.dorm_name === dorm);
+    
+    if (filteredReviews.length === 0) {
+      return 0; 
+    }
+  
+    const totalRating = filteredReviews.reduce((acc, review) => acc + review.rating, 0);
+    return (totalRating / filteredReviews.length).toFixed(2);
+  };
+  console.log(calculateAverageRating("McCutcheon"))
+  
 
   return (
     <>
