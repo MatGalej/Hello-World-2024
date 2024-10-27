@@ -88,7 +88,8 @@
   margin: 5px;
   color: #FFFFFF;
   background-color: #DAAA00;
-  width: 15%;
+  width: 20%;
+  min-width: 175px;
 }
 
 /* Button effects */
