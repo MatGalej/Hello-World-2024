@@ -15,11 +15,11 @@ function FrontPage() {
           <button id='Signin'>Log In</button>
         </a>
       </header>
-      
+
       <div className='front-page'>
         <div>
           <h1>Boiler Dorms</h1>
-          <p>Discover what Purdue has to say about <br></br><b>that one dorm,</b> and all other, normal dorms.</p>
+          <p>Discover what Purdue has to say about <br></br><strike>that one dorm</strike>, and all other, normal dorms.</p>
           <div className='dorm-button-container'>
             <a href='/Dorms'>
               <button className='dorm-button'>View Dorms</button>

@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Space-Grotesk';
+  src: url('./fonts/SpaceGrotesk-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Full-page background image with overlay */
 .background-image {
   position: fixed;
@@ -52,9 +59,9 @@
 }
 
 .front-page h1 {
-  margin-top: 30vh;
+  margin-top: 25vh;
   font-family: 'Space-Grotesk';
-  font-size: 48px;
+  font-size: 8em;
   text-align: center;
   color: #DAAA00;
 }
@@ -81,7 +88,8 @@
   margin: 5px;
   color: #FFFFFF;
   background-color: #DAAA00;
-  width: 125px;
+  width: 20%;
+  min-width: 175px;
 }
 
 /* Button effects */
@@ -100,4 +108,16 @@ button:active {
 
 #Signin {
   background-color: #555960;
+}
+
+.back-button {
+  font-family: 'Space-Grotesk';
+  font-size: 1.2em;
+  border-radius: 10px;
+  padding: 0.5em;
+  margin: 10px;
+  background-color: #555960;
+  color: #FFFFFF;
+  width: 125px;
+  border-style: none;
 }
