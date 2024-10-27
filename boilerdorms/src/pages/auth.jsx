@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useState } from "react";
 import { db } from '../config/firebase';
 import { doc, setDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 export const Auth = () => {
     const [Email, setEmail] = useState("");
@@ -10,6 +11,7 @@ export const Auth = () => {
     const allowedDomain = '@purdue.edu';
     const [error, setError] = useState(""); // Error state
     const [grade, setGrade] = useState(""); // State for grade
+    const navigate = useNavigate(); // Define navigate
 
     const signIn = async () => {
         setError(""); // Clear any previous error
@@ -36,6 +38,7 @@ export const Auth = () => {
 
             console.log("User created successfully with grade:", grade);
             setError(""); // Clear error on success
+            navigate("/");  
 
         } catch (err) {
             if (err.code === "auth/email-already-in-use") {

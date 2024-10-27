@@ -16,7 +16,7 @@ body {
 /* Full-page background container */
 .background-container {
     position: relative;
-    height: 100vh;
+    height: 100vh; 
     /* Full viewport height */
     background-image: url('https://www.purdue.edu/home/wp-content/uploads/2024/04/Card1-Purdue-StadiumMall-2023_KAL_1361-1920x960-1.jpg');
     /* Replace with your image URL */
