@@ -8,7 +8,7 @@ const minRating=1;
 const defaultRating=0;
 const maxReviewLength=2000;
 
-const ReviewForm = (dorm_name) =>{    
+const ReviewForm = ({dorm_name, updateReviews}) =>{    
     const [review, setReview] = useState("");
     const [rating, setRating] = useState(defaultRating);
     const [hoverRating, setHoverRating] = useState(0);
@@ -53,27 +53,23 @@ const ReviewForm = (dorm_name) =>{
             return;
         }
         
-        const {dorm} = dorm_name;
-
         try{
-            var object = {
+            const object = {
                 id: "placeHolderID",
-                dorm_name: dorm,
+                dorm_name: dorm_name,
                 rating: rating,
                 text: review,
                 likes: 0,
                 dislikes: 0
             }
-            
             const reviewDoc = await addDoc(collection(db,"Reviews"),object);
             setRating(0);
             setReview('');
             document.getElementById("reviewTextField").value = "";
-
-            window.location.reload();
-
+    
+            updateReviews();
         }catch(error){
-            console.log("Error creating review document");
+            console.trace("Error creating review document");
         }
     }
 

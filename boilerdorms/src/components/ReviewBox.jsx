@@ -5,7 +5,7 @@ import StarRating from './star'; // Make sure the path is correct
 function ReviewBox({ rating, review, grade }) {
   return (
     <div className="review-box">
-      <style jsx>{`
+      <style>{`
         .review-box {
           border: 1px solid #ddd;
           border-radius: 8px;

@@ -10,7 +10,9 @@ import MapComponent from '../components/MapComponent';
 
 const DormsPage = () => {
   const [reviewList, setReviewList] = useState([]);
-  const [dormSelection, setDormSelection] = useState("Meredith");
+  const [dormSelection, setDormSelection] = useState("Cary Quadrangle");
+  const [updateTrigger, setUpdateTrigger] = useState(1);
+
 
   useEffect(() => {
     const reviewsCollectionRef = collection(db, "Reviews");
@@ -26,7 +28,7 @@ const DormsPage = () => {
     };
 
     getReviewList();
-  }, []);
+  }, [updateTrigger]);
 
   useEffect(() => {
     console.log(dormSelection);
@@ -34,7 +36,12 @@ const DormsPage = () => {
 
   const handleLinkClick = (link) => {
     setDormSelection(link);
+    console.log(reviewList.length);
   };
+
+  const updateReviews = () =>{
+    setUpdateTrigger(updateTrigger*-1);
+  }
 
   const calculateAverageRating = (dorm) => {
     const filteredReviews = reviewList.filter(review => review.dorm_name === dorm);

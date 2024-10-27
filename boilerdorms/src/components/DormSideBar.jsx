@@ -3,7 +3,7 @@ import { db } from './../config/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 
 
-const Sidebar = ({ onLinkClick }) => {
+const Sidebar = ({ onLinkClick , updateTrigger}) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [reviewList, setReviewList] = useState([]);
 
@@ -21,7 +21,7 @@ const Sidebar = ({ onLinkClick }) => {
     };
 
     getReviewList();
-  }, []);
+  }, [updateTrigger]);
 
   const calculateAverageRating = (dorm) => {
     const filteredReviews = reviewList.filter(review => review.dorm_name === dorm);
