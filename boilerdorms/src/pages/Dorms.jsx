@@ -52,16 +52,12 @@ const DormsPage = () => {
   return (
     <>
       <header className="header">
-        <h1>Dorms</h1>
+      <header>
+            <a href='/'>
+              <button className='back-button'>Go Back</button>
+            </a>
+          </header>
       </header>
-      <Navbar
-        link1="/" 
-        text1="Home" 
-        link2="/page-2" 
-        text2="Page 2" 
-        link3="/page-3" 
-        text3="Page 3" 
-      />
       <div style={{ display: 'flex' }}>
         <Sidebar onLinkClick={handleLinkClick} />
         <div className="reviews-container" style={{ padding: '20px', flexGrow: 1 }}>
