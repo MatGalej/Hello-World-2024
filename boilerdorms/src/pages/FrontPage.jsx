@@ -13,15 +13,17 @@ function FrontPage() {
   const [userVal, setUserVal] = useState(null);
   const [success, SetSuccessLogin] = useState("");
 
-  const Auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setUserVal(user);
-      SetSuccessLogin(true);
-    } else {
-      console.log("No user");
-    }
-  });
+useEffect(()=> {
+    const Auth = getAuth();
+    onAuthStateChanged(Auth, (user) => {
+      if (user) {
+        setUserVal(user);
+        SetSuccessLogin(true);
+      } else {
+        console.log("No user");
+      }
+    })
+  },[])
 
   useEffect(() => {
     if (success) {
