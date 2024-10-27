@@ -6,6 +6,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import Sidebar from '../components/DormSideBar';
 import ReviewForm from '../components/ReviewForm';
 import ReviewBox from '../components/ReviewBox';
+import MapComponent from '../components/MapComponent'; 
 
 const DormsPage = () => {
   const [reviewList, setReviewList] = useState([]);
@@ -34,6 +35,7 @@ const DormsPage = () => {
   const handleLinkClick = (link) => {
     setDormSelection(link);
   };
+
   const calculateAverageRating = (dorm) => {
     const filteredReviews = reviewList.filter(review => review.dorm_name === dorm);
     
@@ -44,9 +46,9 @@ const DormsPage = () => {
     const totalRating = filteredReviews.reduce((acc, review) => acc + review.rating, 0);
     return (totalRating / filteredReviews.length).toFixed(2);
   };
-  console.log(calculateAverageRating("McCutcheon"))
-  
 
+  console.log(calculateAverageRating("McCutcheon"));
+  
   return (
     <>
       <header className="header">
@@ -64,25 +66,26 @@ const DormsPage = () => {
         <Sidebar onLinkClick={handleLinkClick} />
         <div className="reviews-container" style={{ padding: '20px', flexGrow: 1 }}>
           <h2>Selected Dorm: {dormSelection}</h2>
-          <ReviewForm dorm = {String(dormSelection)}></ReviewForm>
+          <ReviewForm />
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-           {reviewList.length > 0 ? (
-             reviewList.filter(review => review.dorm_name === dormSelection).map(review => (
-               <ReviewBox 
-                 key={review.id} 
-                 rating={review.rating} 
-                 review={review.text} 
-                 grade={review.dorm_name} 
-               />
+            {reviewList.length > 0 ? (
+              reviewList.filter(review => review.dorm_name === dormSelection).map(review => (
+                <ReviewBox 
+                  key={review.id} 
+                  rating={review.rating} 
+                  review={review.text} 
+                  grade={review.dorm_name} 
+                />
               ))
-             ) : (
-          <div>
-           <p>No reviews available.</p>
-         </div>
-        )}
+            ) : (
+              <div>
+                <p>No reviews available.</p>
+              </div>
+            )}
+          </div>
+          <MapComponent />
         </div>
-     </div>
-    </div>
+      </div>
     </>
   );
 };

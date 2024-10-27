@@ -1,67 +1,66 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup
+} from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+import marker from './../assets/marker.png';
 
-const MapComponent = () => {
-  useEffect(() => {
-    let map;
-    let autocomplete;
+const customMarkerIcon = new L.Icon({
+  iconUrl: marker,
+  iconSize: [30, 45],
+  iconAnchor: [15, 45],
+  popupAnchor: [1, -34],
+});
 
-    const initMap = () => {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 40.427340, lng: -86.918586 },
-        zoom: 13,
-      });
+const center = [40.426909, -86.918681];
 
-      const input = document.getElementById('pac-input');
-      autocomplete = new google.maps.places.Autocomplete(input);
-      autocomplete.bindTo('bounds', map);
+const markers = [
+  { position: [40.425132, -86.928165], description: "McCutcheon" },
+  { position: [40.427039, -86.926240], description: "Hillenbrand" },
+  { position: [40.425089, -86.926756], description: "Harrison" },
+  { position: [40.425824, -86.924838], description: "Earhart" },
+  { position: [40.424943, -86.924511], description: "First Street Towers" },
+  { position: [40.426828, -86.924989], description: "Shreve" },
+  { position: [40.426305, -86.923319], description: "Meredith" },
+  { position: [40.425547, -86.923639], description: "Meredith South" },
+  { position: [40.426786, -86.919499], description: "Honors College" },
+  { position: [40.432151, -86.920707], description: "Owen" },
+  { position: [40.430566, -86.920629], description: "Tarkington" },
+  { position: [40.422964, -86.911770], description: "Hawkins" },
+  { position: [40.428467, -86.919533], description: "Frieda Parker" },
+  { position: [40.431920, -86.917980], description: "Cary Quad" },
+  { position: [40.426734, -86.921001], description: "Windsor" },
+  { position: [40.429501, -86.920690], description: "Wiley" },
+  { position: [40.427827, -86.920124], description: "Winifred Parker" }
+];
 
-      autocomplete.addListener('place_changed', () => {
-        const place = autocomplete.getPlace();
-        if (!place.geometry) {
-          console.log("No details available for the input: '" + place.name + "'");
-          return;
-        }
-
-        if (place.geometry.viewport) {
-          map.fitBounds(place.geometry.viewport);
-        } else {
-          map.setCenter(place.geometry.location);
-          map.setZoom(40);
-        }
-
-        new google.maps.Marker({
-          position: place.geometry.location,
-          map: map,
-        });
-      });
-    };
-
-    const loadGoogleMapsScript = () => {
-      const script = document.createElement('script');
-      script.src = "https://maps.gomaps.pro/maps/api/js?key=AlzaSy9KIx6JJDZ-3j6c5lQ5IFxNRWOheQu6Oxr&libraries=geometry,places&callback=initMap";
-      script.async = true;
-      script.defer = true;
-      window.initMap = initMap; 
-      document.body.appendChild(script);
-    };
-
-    loadGoogleMapsScript();
-
-    return () => {
-      const script = document.querySelector(`script[src="${script.src}"]`);
-      if (script) {
-        document.body.removeChild(script);
-      }
-      delete window.initMap; 
-    };
-  }, []);
-
+export default function MapComponent() {
   return (
-    <div>
-      <input id="pac-input" type="text" placeholder="Search for a place" />
-      <div id="map" style={{ height: '400px', width: '50%' }}></div>
+    <div style={{
+      display: 'flex',
+      justifyContent: 'flex-end',
+      alignItems: 'flex-start',
+      height: '100vh',
+      paddingTop: '20px'
+    }}>
+      <MapContainer
+        center={center}
+        zoom={15}
+        style={{ width: '30vw', height: '50vw' }}
+      >
+        <TileLayer
+          url="https://api.maptiler.com/maps/outdoor-v2/{z}/{x}/{y}.png?key=r9VcUJXvffmbBImhSAM4"
+        />
+        {markers.map((marker, index) => (
+          <Marker key={index} position={marker.position} icon={customMarkerIcon}>
+            <Popup>{marker.description}</Popup>
+          </Marker>
+        ))}
+      </MapContainer>
     </div>
   );
-};
-
-export default MapComponent;
+}
