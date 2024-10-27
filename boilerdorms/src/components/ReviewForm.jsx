@@ -78,7 +78,7 @@ const ReviewForm = (dorm_name) =>{
     }
 
     return (
-        <div>
+        <div className='review-div'>
             <label>Write a review</label>
             <div>{StarRating(maxRating)}</div>
             <input id="reviewTextField" name = "review" placeholder= "Write your review here..." type="text" onChange={(e) => setReview(e.target.value)}/>

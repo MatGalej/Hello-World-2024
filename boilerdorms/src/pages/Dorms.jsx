@@ -58,22 +58,22 @@ const DormsPage = () => {
           </a>
         </div>
         <div className='selected-dorm'>
-        <h2>Selected Dorm: {dormSelection}</h2>	
+          <h2>Selected Dorm: {dormSelection}</h2>	
         </div>
       </header>
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: 'flex', gap: '20px', }}> {/* Adjusted gap to separate sidebar and content */}
         <Sidebar onLinkClick={handleLinkClick} />
-        <div className="reviews-container" style={{ padding: '20px', flexGrow: 1 }}>
-
-          <ReviewForm />
-          <div style={{ display: 'flex', flexDirection: 'column'}}>
+        <div className="reviews-container" style={{ display: 'flex', flexDirection: 'column', padding: '10px', flexGrow: 1 }}>
+          <MapComponent />
+            <ReviewForm /> 
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0px', marginTop: 0 }}> {/* Control review spacing */}
             {reviewList.length > 0 ? (
               reviewList.filter(review => review.dorm_name === dormSelection).map(review => (
                 <ReviewBox
                   key={review.id}
                   rating={review.rating}
                   review={review.text}
-                  grade={review.dorm_name}
+                  grade={review.dorm_name} // Explicitly remove margin from each ReviewBox
                 />
               ))
             ) : (
@@ -82,7 +82,6 @@ const DormsPage = () => {
               </div>
             )}
           </div>
-          <MapComponent />
         </div>
       </div>
     </>

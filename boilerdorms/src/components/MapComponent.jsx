@@ -42,19 +42,17 @@ export default function MapComponent() {
   const mapRef = useRef();
 
   return (
-    <div style={{
-      display: 'flex',
-      justifyContent: 'flex-end',
-      alignItems: 'flex-start',
-      height: '100vh',
-      paddingTop: '20px'
-    }}>
+    <div>
       <MapContainer
-        center={center}
-        zoom={15}
-        style={{ width: '30vw', height: '50vw' }}
-        ref={mapRef}
-      >
+    center={center}
+    zoom={15}
+    style={{ 
+      width: '81vw', 
+      height: '60vh', // Fills remaining viewport height below the header
+      borderRadius: '10px'
+    }}
+    ref={mapRef}
+  >
         <TileLayer
           url="https://api.maptiler.com/maps/outdoor-v2/{z}/{x}/{y}.png?key=r9VcUJXvffmbBImhSAM4"
         />
