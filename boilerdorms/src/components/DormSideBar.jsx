@@ -61,14 +61,16 @@ const Sidebar = ({ onLinkClick }) => {
   };
 
   return (
-    <ul style={{ listStyleType: 'none', padding: 0 }}>
+    <ul className='dorm-options' style={{ listStyleType: 'none', padding: 3 }}>
       {dorms.map((dorm, index) => (
-        <li key={index} style={{ margin: '5px 0' }}>
+        <li key={index} style={{ margin: '5px .5em' }}>
           <button
             onClick={() => handleLinkClick(index, dorm)}
             style={{
               width: '200px',
-              backgroundColor: activeIndex === index ? 'lightblue' : 'white',
+              fontFamily: 'Space-Grotesk',
+              fontSize: '.9em',
+              backgroundColor: activeIndex === index ? 'lightblue' : "#DAAA00" ,
               border: '1px solid #ccc',
               padding: '10px',
               cursor: 'pointer',
@@ -76,7 +78,7 @@ const Sidebar = ({ onLinkClick }) => {
               transition: 'background-color 0.3s',
               display: 'flex', 
               justifyContent: 'space-between', 
-              alignItems: 'center'
+              alignItems: 'center',
             }}
           >
             <span>{dorm}</span>
